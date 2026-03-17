@@ -23,7 +23,7 @@ These individuals and their community are explicitly prohibited from using, copy
 
 ### Requirements
 
-- [HappinessMP](https://happiness-mp.com) server with GTA IV Episode 2 (TBOGT)
+- [HappinessMP](https://happinessmp.net) server with GTA IV Episode 2 (TBOGT)
 - MySQL X (production) or SQLite (development)
 
 ### Configuration
