@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="overlay"></div>
+    <div id="panel">
+        <div id="panel-header">
+            <div>
+                <span class="tag">Settings</span>
+                <h1>Preferences</h1>
+            </div>
+            <button id="close-btn" onclick="closePanel()">&times;</button>
+        </div>
+
+        <!-- Tab bar -->
+        <div id="tab-bar">
+            <button class="tab active" data-tab="account">Account</button>
+            <button class="tab" data-tab="chat">Chat</button>
+            <button class="tab" data-tab="interface">Interface</button>
+        </div>
+
+        <!-- Tab: Account -->
+        <div class="tab-content active" id="tab-account">
+            <div class="field">
+                <label class="field-label">Current Password</label>
+                <input type="password" id="pw-current" autocomplete="off" />
+            </div>
+            <div class="field">
+                <label class="field-label">New Password</label>
+                <input type="password" id="pw-new" autocomplete="off" />
+            </div>
+            <div class="field">
+                <label class="field-label">Confirm New Password</label>
+                <input type="password" id="pw-confirm" autocomplete="off" />
+            </div>
+            <button class="btn btn-primary" id="pw-submit" onclick="changePassword()">Change Password</button>
+            <div id="pw-msg" class="msg hidden"></div>
+        </div>
+
+        <!-- Tab: Chat -->
+        <div class="tab-content" id="tab-chat">
+            <div class="setting-row">
+                <label class="field-label">Font Size</label>
+                <div class="range-group">
+                    <input type="range" id="font-size" min="12" max="24" step="1" value="12" />
+                    <span class="range-val" id="font-size-val">12</span>
+                </div>
+            </div>
+            <div class="setting-row">
+                <label class="field-label">Page Size</label>
+                <div class="range-group">
+                    <input type="range" id="page-size" min="10" max="30" step="1" value="20" />
+                    <span class="range-val" id="page-size-val">20</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Interface -->
+        <div class="tab-content" id="tab-interface">
+            <div class="setting-row">
+                <label class="field-label">Money HUD</label>
+                <label class="toggle">
+                    <input type="checkbox" id="toggle-money" />
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-row">
+                <label class="field-label">UI Notifications</label>
+                <label class="toggle">
+                    <input type="checkbox" id="toggle-notifications" />
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="setting-row">
+                <label class="field-label">Inventory UI</label>
+                <label class="toggle">
+                    <input type="checkbox" id="toggle-inventory" />
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

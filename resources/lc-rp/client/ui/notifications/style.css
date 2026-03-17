@@ -1,0 +1,92 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: transparent;
+    pointer-events: none;
+}
+
+/* ── Toast stack ───────────────────────────────────────────────────────────── */
+
+#toasts {
+    position: fixed;
+    bottom: clamp(1.5rem, 3vh, 3rem);
+    right: clamp(1.5rem, 2vw, 2.5rem);
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.4rem;
+    width: clamp(260px, 20vw, 400px);
+}
+
+/* ── Individual toast ──────────────────────────────────────────────────────── */
+
+.toast {
+    background: #1b1d21;
+    border: 1px solid #2a2e35;
+    border-left: 3px solid var(--color);
+    padding: clamp(0.65rem, 1vh, 0.85rem) clamp(0.85rem, 1.2vw, 1.1rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    position: relative;
+    overflow: hidden;
+    animation: slideIn 0.2s ease forwards;
+}
+
+.toast.removing {
+    animation: slideOut 0.25s ease forwards;
+}
+
+/* Type label */
+.toast-type {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.5rem, 0.55vw, 0.65rem);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color);
+}
+
+/* Message */
+.toast-message {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: clamp(0.72rem, 0.8vw, 0.9rem);
+    color: #e1e1e1;
+    line-height: 1.5;
+}
+
+/* Progress bar */
+.toast-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--color);
+    opacity: 0.35;
+    transform-origin: left;
+}
+
+/* ── Type colours ──────────────────────────────────────────────────────────── */
+
+.toast[data-type="success"] { --color: #4b8b4b; }
+.toast[data-type="error"]   { --color: #a63d3d; }
+.toast[data-type="warn"]    { --color: #a67c3d; }
+.toast[data-type="info"]    { --color: #3d6ba6; }
+
+/* ── Animations ────────────────────────────────────────────────────────────── */
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(1.5rem); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideOut {
+    from { opacity: 1; transform: translateX(0); }
+    to   { opacity: 0; transform: translateX(1.5rem); }
+}

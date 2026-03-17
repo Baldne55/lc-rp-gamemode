@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liberty City - Roleplay</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="overlay"></div>
+
+    <div id="root">
+
+        <!-- Card -->
+        <div id="card">
+
+            <div id="logo">
+                <div class="logo-text">Liberty City - Roleplay</div>
+            </div>
+
+            <!-- Header -->
+            <div id="card-header">
+                <span class="tag">Authentication Required</span>
+                <h1>Access Your Account</h1>
+                <p>
+                    Enter your credentials to connect to Liberty City - Roleplay.
+                    New players must verify their account on
+                    <span class="mono">Liberty City - Roleplay (LC-RP)</span> after registration.
+                </p>
+            </div>
+
+            <!-- Tabs -->
+            <div id="tabs">
+                <button class="tab active" data-tab="login">Login</button>
+                <button class="tab" data-tab="register">Register</button>
+            </div>
+
+            <!-- Action section -->
+            <div id="action">
+
+                <!-- Login form -->
+                <form id="form-login" class="auth-form active" autocomplete="off">
+                    <div class="field">
+                        <label for="login-username">Username</label>
+                        <input id="login-username" type="text" placeholder="Enter your username" maxlength="20" spellcheck="false" />
+                    </div>
+                    <div class="field">
+                        <label for="login-password">Password</label>
+                        <input id="login-password" type="password" placeholder="Enter your password" maxlength="64" />
+                    </div>
+                    <div id="login-msg" class="msg hidden"></div>
+                    <button type="submit" id="login-btn">Login</button>
+                </form>
+
+                <!-- Register form -->
+                <form id="form-register" class="auth-form" autocomplete="off">
+                    <div class="field">
+                        <label for="reg-username">Username</label>
+                        <input id="reg-username" type="text" placeholder="Choose a username (3–20 chars)" maxlength="20" spellcheck="false" />
+                    </div>
+                    <div class="field">
+                        <label for="reg-password">Password</label>
+                        <input id="reg-password" type="password" placeholder="Choose a password (min 6 chars)" maxlength="64" />
+                    </div>
+                    <div class="field">
+                        <label for="reg-confirm">Confirm Password</label>
+                        <input id="reg-confirm" type="password" placeholder="Repeat your password" maxlength="64" />
+                    </div>
+                    <div id="register-msg" class="msg hidden"></div>
+                    <button type="submit" id="register-btn">Create Account</button>
+                </form>
+
+                <!-- Pending -->
+                <div id="pending" class="hidden">
+                    <div class="spinner"></div>
+                    <span class="pending-label">Awaiting server response...</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Online indicator -->
+        <div id="indicator">
+            <span class="dot"></span>
+            <span class="indicator-label">System Online // Persistent World</span>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

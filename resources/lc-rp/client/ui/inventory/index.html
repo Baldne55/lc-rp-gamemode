@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Inventory</title>
+</head>
+<body>
+    <div id="root">
+        <!-- Main inventory panel -->
+        <div id="inv-panel">
+            <div id="inv-header">
+                <span class="tag">Inventory</span>
+                <div id="inv-stats">
+                    <div id="inv-weight-row">
+                        <span id="inv-weight-text">0.00 / 50.00 kg</span>
+                        <div id="inv-weight-bar"><div id="inv-weight-fill"></div></div>
+                    </div>
+                    <span id="inv-slot-text">0 / 20 slots</span>
+                </div>
+            </div>
+
+            <div id="inv-grid">
+                <!-- 20 slots rendered by JS -->
+            </div>
+
+            <!-- Action bar and prompt are now rendered inside inv-grid by JS -->
+
+            <div id="inv-footer">
+                <button class="btn btn-ghost" id="btn-close">Close</button>
+            </div>
+        </div>
+
+        <!-- Container side panel -->
+        <div id="container-panel" class="hidden">
+            <div id="container-header">
+                <span class="tag">Container</span>
+                <div id="container-name">--</div>
+                <div id="container-stats">
+                    <span id="container-weight-text">0.00 / 0.00 kg</span>
+                    <span id="container-slot-text">0 / 0 slots</span>
+                </div>
+            </div>
+
+            <div id="container-grid">
+                <!-- Container slots rendered by JS -->
+            </div>
+
+            <div id="container-action-bar">
+                <div class="container-action inv-disabled" id="inv-btn-store">Store</div>
+                <div class="container-action inv-disabled" id="inv-btn-retrieve">Retrieve</div>
+            </div>
+
+            <!-- Container prompt overlay -->
+            <div id="container-prompt" class="hidden">
+                <div id="container-prompt-label">Amount</div>
+                <input type="number" id="container-prompt-input" min="1" value="1" />
+                <div id="container-prompt-actions">
+                    <button class="btn btn-primary" id="container-prompt-confirm">Confirm</button>
+                    <button class="btn btn-ghost" id="container-prompt-cancel">Cancel</button>
+                </div>
+            </div>
+
+            <div id="container-footer">
+                <button class="btn btn-ghost" id="btn-container-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

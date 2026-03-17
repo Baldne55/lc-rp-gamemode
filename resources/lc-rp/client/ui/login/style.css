@@ -1,0 +1,419 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    color: #F3F6F6;
+    background: transparent;
+    user-select: none;
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+}
+
+#root {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* ── Logo ──────────────────────────────────────────────────────────────────── */
+
+#logo {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: clamp(2rem, 5vh, 5rem);
+}
+
+#logo .accent {
+    color: #a63d3d;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────────────── */
+
+#card {
+    width: 100%;
+    max-width: clamp(300px, 22vw, 500px);
+    background: #1b1d21;
+    border: 1px solid #2a2e35;
+}
+
+/* Header */
+#card-header {
+    padding: clamp(1.25rem, 2vw, 2.5rem);
+    border-bottom: 1px solid #2a2e35;
+}
+
+.tag {
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.55rem, 0.65vw, 0.8rem);
+    color: #a63d3d;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: clamp(0.6rem, 1vh, 1rem);
+}
+
+#card-header h1 {
+    font-size: clamp(1rem, 1.4vw, 1.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: clamp(0.5rem, 1vh, 0.75rem);
+}
+
+#card-header p {
+    font-size: clamp(0.78rem, 0.85vw, 1rem);
+    color: #8e9297;
+    line-height: 1.6;
+}
+
+#card-header p .mono {
+    font-family: 'Courier New', Courier, monospace;
+    color: #e1e1e1;
+}
+
+/* ── Tabs ──────────────────────────────────────────────────────────────────── */
+
+#tabs {
+    display: flex;
+    border-bottom: 1px solid #2a2e35;
+}
+
+.tab {
+    flex: 1;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    color: #5c6066;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.6rem, 0.7vw, 0.8rem);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: clamp(0.65rem, 1vh, 0.85rem);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+}
+
+.tab:hover {
+    color: #e1e1e1;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.tab.active {
+    color: #a63d3d;
+    border-bottom-color: #a63d3d;
+}
+
+/* ── Action section ────────────────────────────────────────────────────────── */
+
+#action {
+    padding: clamp(1rem, 1.5vw, 2rem) clamp(1.25rem, 2vw, 2.5rem);
+}
+
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: clamp(0.65rem, 1vh, 1rem);
+}
+
+.auth-form.active {
+    display: flex;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.field label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.55rem, 0.6vw, 0.7rem);
+    color: #5c6066;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.field input {
+    width: 100%;
+    background: #13151a;
+    border: 1px solid #2a2e35;
+    color: #e1e1e1;
+    font-family: inherit;
+    font-size: clamp(0.78rem, 0.85vw, 1rem);
+    padding: clamp(0.5rem, 0.7vh, 0.75rem) clamp(0.65rem, 0.8vw, 0.85rem);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.field input::placeholder {
+    color: #3a3d42;
+}
+
+.field input:focus {
+    border-color: #a63d3d;
+}
+
+/* Message */
+.msg {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.55rem, 0.65vw, 0.75rem);
+    color: #c0534f;
+    padding: 0.5rem 0.65rem;
+    background: rgba(166, 61, 61, 0.1);
+    border-left: 2px solid #a63d3d;
+    line-height: 1.5;
+}
+
+.msg.hidden {
+    display: none;
+}
+
+/* Submit button */
+.auth-form button[type="submit"] {
+    width: 100%;
+    background: #a63d3d;
+    border: none;
+    color: #e1e1e1;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.65rem, 0.75vw, 0.85rem);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: clamp(0.55rem, 0.8vh, 0.85rem);
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: clamp(0.25rem, 0.5vh, 0.5rem);
+}
+
+.auth-form button[type="submit"]:hover {
+    background: #bf4848;
+}
+
+.auth-form button[type="submit"]:disabled {
+    background: #3a2020;
+    color: #5c6066;
+    cursor: not-allowed;
+}
+
+/* ── Pending state ─────────────────────────────────────────────────────────── */
+
+#pending {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 1vh, 0.75rem);
+    padding: clamp(0.75rem, 1.5vh, 1.5rem) 0;
+}
+
+#pending.hidden {
+    display: none;
+}
+
+.spinner {
+    width: clamp(1rem, 1.5vw, 1.5rem);
+    height: clamp(1rem, 1.5vw, 1.5rem);
+    border: 2px solid #2a2e35;
+    border-top-color: #a63d3d;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.pending-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.55rem, 0.6vw, 0.7rem);
+    color: #5c6066;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* ── Online indicator ──────────────────────────────────────────────────────── */
+
+#indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: clamp(1.5rem, 3vh, 3rem);
+}
+
+.dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    background: #4b6b4b;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4b6b4b;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+}
+
+.indicator-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.55rem, 0.6vw, 0.7rem);
+    color: #5c6066;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* ── Modern LC-RP theme overrides (login) ───────────────────────────────────── */
+
+#root {
+    padding: clamp(1.25rem, 2vh, 2rem);
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    color: #F3F6F6;
+    text-align: center;
+    margin-bottom: clamp(1.25rem, 2vh, 1.75rem);
+}
+
+.logo-text {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8CA39B;
+}
+
+#card {
+    max-width: clamp(320px, 26vw, 520px);
+    /* Semi‑transparent glass over the background image */
+    background-color: rgba(15, 18, 19, 0.82);
+    border: 1px solid #2D3234;
+    border-radius: 14px;
+    box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+}
+
+#card-header {
+    padding: clamp(1.5rem, 2.4vw, 2.6rem);
+    border-bottom-color: #2D3234;
+}
+
+.tag {
+    font-size: clamp(0.6rem, 0.7vw, 0.82rem);
+    color: #8CA39B;
+    letter-spacing: 0.22em;
+}
+
+#card-header h1 {
+    font-size: clamp(1.05rem, 1.5vw, 1.7rem);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+#card-header p {
+    font-size: clamp(0.8rem, 0.9vw, 1rem);
+    color: #9DAAB1;
+}
+
+#card-header p .mono {
+    color: #F3F6F6;
+}
+
+#tabs {
+    border-bottom-color: #2D3234;
+}
+
+.tab {
+    color: #6B7D76;
+    letter-spacing: 0.18em;
+    background: transparent;
+}
+
+.tab:hover {
+    color: #CCE5DE;
+    background: rgba(243, 246, 246, 0.02);
+}
+
+.tab.active {
+    color: #CCE5DE;
+    border-bottom-color: #8CA39B;
+}
+
+#action {
+    padding: clamp(1.15rem, 1.75vw, 2.1rem) clamp(1.4rem, 2.25vw, 2.6rem);
+}
+
+.field label {
+    color: #6B7D76;
+}
+
+.field input {
+    background: rgba(10, 12, 13, 0.96);
+    border-color: #2D3234;
+    color: #F3F6F6;
+}
+
+.field input::placeholder {
+    color: #3A4042;
+}
+
+.field input:focus {
+    border-color: #8CA39B;
+}
+
+.auth-form button[type="submit"] {
+    background: #8CA39B;
+    color: #050608;
+    letter-spacing: 0.2em;
+}
+
+.auth-form button[type="submit"]:hover {
+    background: #A0B8AF;
+}
+
+.auth-form button[type="submit"]:disabled {
+    background: rgba(92, 125, 118, 0.28);
+    color: #6B7D76;
+}
+
+.spinner {
+    border-color: #2D3234;
+    border-top-color: #8CA39B;
+}
+
+.pending-label {
+    color: #6B7D76;
+}
+
+.dot {
+    background: #8CA39B;
+    box-shadow: 0 0 10px rgba(140, 163, 155, 0.8);
+}
+
+.indicator-label {
+    color: #6B7D76;
+}

@@ -1,0 +1,316 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    color: #F3F6F6;
+    background: transparent;
+    user-select: none;
+}
+
+/* ── Overlay ──────────────────────────────────────────────────────────────── */
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* ── Panel ────────────────────────────────────────────────────────────────── */
+
+#panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(340px, 28vw, 500px);
+    background-color: rgba(15, 18, 19, 0.82);
+    border: 1px solid #2D3234;
+    border-radius: 14px;
+    box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(0, 0, 0, 0.6);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.97); }
+    to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+#panel-header {
+    padding: clamp(1rem, 1.5vw, 1.5rem) clamp(1.25rem, 1.8vw, 2rem);
+    border-bottom: 1px solid #2D3234;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.tag {
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.6rem, 0.7vw, 0.82rem);
+    color: #8CA39B;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-bottom: clamp(0.2rem, 0.3vh, 0.35rem);
+}
+
+h1 {
+    font-size: clamp(0.95rem, 1.1vw, 1.3rem);
+    font-weight: 600;
+    color: #F3F6F6;
+}
+
+#close-btn {
+    background: none;
+    border: none;
+    color: #6B7D76;
+    font-size: clamp(1.2rem, 1.4vw, 1.6rem);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 0.2rem;
+    transition: color 0.2s;
+}
+
+#close-btn:hover {
+    color: #F3F6F6;
+}
+
+/* ── Tab bar ──────────────────────────────────────────────────────────────── */
+
+#tab-bar {
+    display: flex;
+    border-bottom: 1px solid #2D3234;
+}
+
+.tab {
+    flex: 1;
+    padding: clamp(0.55rem, 0.8vh, 0.75rem) 0;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.58rem, 0.65vw, 0.75rem);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #6B7D76;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+    color: #9DAAB1;
+}
+
+.tab.active {
+    color: #8CA39B;
+    border-bottom-color: #8CA39B;
+}
+
+/* ── Tab content ──────────────────────────────────────────────────────────── */
+
+.tab-content {
+    display: none;
+    padding: clamp(1rem, 1.5vw, 1.5rem) clamp(1.25rem, 1.8vw, 2rem);
+    flex-direction: column;
+    gap: clamp(0.75rem, 1vh, 1rem);
+}
+
+.tab-content.active {
+    display: flex;
+}
+
+/* ── Field (password inputs) ──────────────────────────────────────────────── */
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.field-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.55rem, 0.6vw, 0.7rem);
+    color: #6B7D76;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.field input[type="password"] {
+    background: rgba(10, 12, 13, 0.96);
+    border: 1px solid #2D3234;
+    border-radius: 4px;
+    color: #F3F6F6;
+    font-family: inherit;
+    font-size: clamp(0.75rem, 0.82vw, 0.95rem);
+    padding: clamp(0.4rem, 0.55vh, 0.55rem) clamp(0.5rem, 0.7vw, 0.7rem);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.field input[type="password"]:focus {
+    border-color: #8CA39B;
+}
+
+/* ── Setting row (slider / toggle) ────────────────────────────────────────── */
+
+.setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+/* ── Range slider ─────────────────────────────────────────────────────────── */
+
+.range-group {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.range-val {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.65rem, 0.72vw, 0.82rem);
+    color: #9DAAB1;
+    min-width: 1.8em;
+    text-align: right;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: clamp(100px, 10vw, 160px);
+    height: 4px;
+    background: #2D3234;
+    border-radius: 2px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #8CA39B;
+    cursor: pointer;
+    border: none;
+    transition: background 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #A0B8AF;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #8CA39B;
+    cursor: pointer;
+    border: none;
+}
+
+/* ── Toggle switch ────────────────────────────────────────────────────────── */
+
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: #2D3234;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.25s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    background: #6B7D76;
+    border-radius: 50%;
+    transition: left 0.25s, background 0.25s;
+}
+
+.toggle input:checked + .slider {
+    background: rgba(140, 163, 155, 0.35);
+}
+
+.toggle input:checked + .slider::before {
+    left: 21px;
+    background: #8CA39B;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+
+.btn {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.6rem, 0.7vw, 0.8rem);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background: #8CA39B;
+    color: #050608;
+    padding: clamp(0.4rem, 0.6vh, 0.6rem) clamp(1rem, 1.5vw, 1.5rem);
+    align-self: flex-start;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #A0B8AF;
+}
+
+.btn-primary:disabled {
+    background: rgba(92, 125, 118, 0.28);
+    color: #6B7D76;
+    cursor: not-allowed;
+}
+
+/* ── Message ──────────────────────────────────────────────────────────────── */
+
+.msg {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(0.55rem, 0.62vw, 0.72rem);
+    padding: clamp(0.35rem, 0.5vh, 0.5rem) 0;
+    line-height: 1.4;
+}
+
+.msg.success { color: #7EB579; }
+.msg.error   { color: #A87474; }
+.msg.hidden  { display: none; }

@@ -1,0 +1,169 @@
+<meta type="lua">
+	<!-- Server: config (loaded first, before everything) -->
+	<script type="server" src="server/config.lua" />
+
+	<!-- Server: DB layer (order matters) -->
+	<script type="server" src="server/db/database.lua" />
+	<script type="server" src="server/db/model.lua" />
+	<script type="server" src="server/db/migrations.lua" />
+	<script type="server" src="server/db/models/account.lua" />
+	<script type="server" src="server/db/models/character.lua" />
+	<script type="server" src="server/db/models/bank_account.lua" />
+	<script type="server" src="server/db/models/bank_transaction.lua" />
+	<script type="server" src="server/db/models/item_definition.lua" />
+	<script type="server" src="server/db/models/inventory_item.lua" />
+	<script type="server" src="server/db/models/dropped_item.lua" />
+	<script type="server" src="server/db/models/item_transfer.lua" />
+	<script type="server" src="server/db/models/faction.lua" />
+	<script type="server" src="server/db/models/faction_rank.lua" />
+	<script type="server" src="server/db/models/faction_member.lua" />
+	<script type="server" src="server/db/models/company.lua" />
+	<script type="server" src="server/db/models/company_rank.lua" />
+	<script type="server" src="server/db/models/company_member.lua" />
+	<script type="server" src="server/db/models/email.lua" />
+	<script type="server" src="server/db/models/advertisement.lua" />
+	<script type="server" src="server/db/models/news_article.lua" />
+	<script type="server" src="server/db/models/gov_post.lua" />
+
+	<!-- Server: shared utilities -->
+	<script type="server" src="shared/json.lua" />
+
+	<!-- Server: utilities -->
+	<script type="server" src="server/utils/log.lua" />
+	<script type="server" src="server/utils/hash.lua" />
+	<script type="server" src="server/utils/notify.lua" />
+	<script type="server" src="server/utils/peds.lua" />
+	<script type="server" src="server/utils/guard.lua" />
+	<script type="server" src="server/utils/item_registry.lua" />
+	<script type="server" src="server/utils/resolve.lua" />
+	<script type="server" src="server/utils/org_helpers.lua" />
+	<script type="server" src="server/players.lua" />
+
+	<!-- Server: API layer (after utils/players, before handlers) -->
+	<script type="server" src="server/api/char_state.lua" />
+	<script type="server" src="server/api/inventory.lua" />
+	<script type="server" src="server/api/org.lua" />
+	<script type="server" src="server/api/computer.lua" />
+
+	<!-- Server: core (after API layer) -->
+	<script type="server" src="core/commands/server.lua" />
+
+	<!-- Server: handlers -->
+	<script type="server" src="server/handlers/auth.lua" />
+	<script type="server" src="server/handlers/character.lua" />
+	<script type="server" src="server/handlers/noclip.lua" />
+	<script type="server" src="server/handlers/pay.lua" />
+	<script type="server" src="server/handlers/inventory.lua" />
+	<script type="server" src="server/handlers/inventory_containers.lua" />
+	<script type="server" src="server/handlers/inventory_admin.lua" />
+	<script type="server" src="server/handlers/inventory_ui.lua" />
+	<script type="server" src="server/handlers/faction_admin.lua" />
+	<script type="server" src="server/handlers/faction.lua" />
+	<script type="server" src="server/handlers/company_admin.lua" />
+	<script type="server" src="server/handlers/company.lua" />
+	<script type="server" src="server/handlers/computer.lua" />
+	<script type="server" src="server/handlers/settings.lua" />
+	<script type="server" src="chat/server_chat.lua" />
+
+	<!-- Server: entry point -->
+	<script type="server" src="server/server.lua" />
+
+	<!-- Client: config (loaded first) -->
+	<script type="client" src="client/config.lua" />
+
+	<!-- Client: shared utilities -->
+	<script type="client" src="shared/json.lua" />
+
+	<!-- Client: utilities -->
+	<script type="client" src="client/utils/webui.lua" />
+	<script type="client" src="client/utils/player.lua" />
+	<script type="client" src="client/utils/appearance.lua" />
+
+	<!-- Client: chat (Chat API used by cmds, noclip, notifications) -->
+	<script type="client" src="chat/client_chat.lua" />
+	<script type="client" src="chat/client_position_sync.lua" />
+	<script type="client" src="chat/client_health_sync.lua" />
+	<script type="client" src="chat/client_ammo_sync.lua" />
+	<script type="client" src="chat/client_weapon_audit.lua" />
+
+	<!-- Client: core (after chat API, before commands that call Cmd.Register) -->
+	<script type="client" src="core/commands/client.lua" />
+
+	<!-- Client: commands -->
+	<script type="client" src="client/cmds.lua" />
+	<script type="client" src="client/noclip.lua" />
+
+	<!-- Client: handlers -->
+	<script type="client" src="client/handlers/auth.lua" />
+	<script type="client" src="client/handlers/character.lua" />
+	<script type="client" src="client/handlers/notifications.lua" />
+	<script type="client" src="client/handlers/inventory_labels.lua" />
+	<script type="client" src="client/handlers/inventory_ui.lua" />
+	<script type="client" src="client/handlers/hud_money.lua" />
+	<script type="client" src="client/handlers/hud_toggle.lua" />
+	<script type="client" src="client/handlers/settings.lua" />
+	<script type="client" src="client/handlers/computer.lua" />
+
+<!-- Login UI files (downloaded to client cache) -->
+	<file src="client/ui/login/index.html" />
+	<file src="client/ui/login/style.css" />
+	<file src="client/ui/login/script.js" />
+	<file src="client/ui/login/logo.png" />
+	<file src="client/ui/login/background.png" />
+
+	<!-- Character UI files (downloaded to client cache) -->
+	<file src="client/ui/character/index.html" />
+	<file src="client/ui/character/style.css" />
+	<file src="client/ui/character/peds.js" />
+	<file src="client/ui/character/script.js" />
+	<file src="client/ui/character/logo.png" />
+	<file src="client/ui/character/background.png" />
+
+	<!-- Inventory UI files (downloaded to client cache) -->
+	<file src="client/ui/inventory/index.html" />
+	<file src="client/ui/inventory/style.css" />
+	<file src="client/ui/inventory/script.js" />
+
+	<!-- Notification UI files (downloaded to client cache) -->
+	<file src="client/ui/notifications/index.html" />
+	<file src="client/ui/notifications/style.css" />
+	<file src="client/ui/notifications/script.js" />
+
+	<!-- Money HUD UI files (downloaded to client cache) -->
+	<file src="client/ui/hud/money/index.html" />
+	<file src="client/ui/hud/money/style.css" />
+	<file src="client/ui/hud/money/script.js" />
+
+	<!-- Settings UI files (downloaded to client cache) -->
+	<file src="client/ui/settings/index.html" />
+	<file src="client/ui/settings/style.css" />
+	<file src="client/ui/settings/script.js" />
+
+	<!-- Chat UI files (downloaded to client cache) -->
+	<file src="chat/ui/index.html" />
+	<file src="chat/ui/script.js" />
+	<file src="chat/ui/styles.css" />
+
+	<!-- Computer UI files (downloaded to client cache) -->
+	<file src="client/ui/computer/index.html" />
+	<file src="client/ui/computer/style.css" />
+	<file src="client/ui/computer/app.js" />
+	<file src="client/ui/computer/index.jpg" />
+	<file src="client/ui/computer/assets/background.jpg" />
+	<file src="client/ui/computer/assets/backbut.png" />
+	<file src="client/ui/computer/assets/backbutoff.png" />
+	<file src="client/ui/computer/assets/forbut.png" />
+	<file src="client/ui/computer/assets/forbutoff.png" />
+	<file src="client/ui/computer/assets/homebut.png" />
+	<file src="client/ui/computer/assets/homebutoff.png" />
+	<file src="client/ui/computer/assets/mailbutoff.png" />
+	<file src="client/ui/computer/assets/mailbut.png" />
+	<file src="client/ui/computer/assets/tw_logo.png" />
+	<file src="client/ui/computer/assets/cursor.png" />
+	<file src="client/ui/computer/assets/cursor_middle.png" />
+	<file src="client/ui/computer/assets/web.png" />
+	<file src="client/ui/computer/assets/logout.png" />
+	<file src="client/ui/computer/assets/email-icon.png" />
+	<file src="client/ui/computer/assets/din1451alt.ttf" />
+	<file src="client/ui/computer/assets/click.mp3" />
+</meta>

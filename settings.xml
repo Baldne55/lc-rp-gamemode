@@ -1,0 +1,38 @@
+<settings>
+    <!-- "::" means listen on all local IPv4 & IPv6 adapters. -->
+    <!-- WARNING: Don't change this without experience! -->
+    <hostaddress>::</hostaddress>
+
+    <!-- The hostname players will see. -->
+    <hostname>[EN] Liberty City - Roleplay | Text-based RP (LC-RP)</hostname>
+
+    <!-- Add the server to the master list. -->
+    <listed>false</listed>
+
+    <!-- Port the server will listen on. -->
+    <port>9999</port>
+
+    <!-- Maximum number of players the server will support (max 100). -->
+    <maxplayers>100</maxplayers>
+
+    <!-- Select game episode to be used by server. -->
+    <!-- 0 = IV, 1 = TLAD, 2 = TBOGT -->
+    <episode>2</episode>
+
+    <!-- Used for encrypting client side resource files. Don't use default one! -->
+    <!-- Keep it empty to disable encryption (not recommended!) -->
+    <secret>49aa8cb2ee82dbe010c2390a4a38ee8b13df7eba799e72725881daede1896e6e26dee9899e23e08bbbfb569a8dbdf521e4f99bc3a0afcba194b03b463734dc3c</secret>
+
+    <!-- Select log level for console and log file. -->
+    <!-- 0 = Trace, 1 = Debug, 2 = Info, 3 = Warn, 4 = Error, 5 = Critical, 6 = Off -->
+    <loglevel>2</loglevel>
+
+    <!-- Enable default chat. -->
+    <chat>false</chat>
+
+    <!-- The resources the server will load and run. -->
+    <resource>lc-rp</resource>
+
+    <!-- Secret sauce by Lion to Baldne55 <3 -->
+    <joinsolosession>true</joinsolosession>
+</settings>

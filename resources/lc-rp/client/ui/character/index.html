@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liberty City - Roleplay</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="overlay"></div>
+
+    <div id="root">
+
+        <!-- ── Selection panel ── -->
+        <div id="panel-select" class="panel active">
+            <div id="card-select">
+
+                <div id="logo">
+                    <div class="logo-text">Liberty City - Roleplay</div>
+                </div>
+
+                <div id="card-header">
+                    <span class="tag">Character Selection</span>
+                    <h1>Select Your Character</h1>
+                    <p>Choose a character to enter the world, or create a new one.</p>
+                </div>
+
+                <div id="slot-grid">
+                    <!-- Slots injected by JS -->
+                </div>
+
+                <div id="select-footer">
+                    <button id="btn-play" class="btn btn-primary" disabled>Play</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ── Creation panel ── -->
+        <div id="panel-create" class="panel">
+            <div id="card-create">
+
+                <div id="logo">
+                    <div class="logo-text">Liberty City - Roleplay</div>
+                </div>
+
+                <div id="card-header-create">
+                    <button id="btn-back">← Back</button>
+                    <span class="tag">New Character</span>
+                    <h1>Create Character</h1>
+                </div>
+
+                <form id="form-create" autocomplete="off">
+                    <div id="create-msg" class="msg hidden"></div>
+
+                    <!-- Step 1: Name, DOB, Gender, Blood -->
+                    <div id="create-step1" class="create-step">
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="c-first">First Name</label>
+                                <input id="c-first" type="text" placeholder="e.g. John" maxlength="32" spellcheck="false" />
+                            </div>
+                            <div class="field">
+                                <label for="c-last">Last Name</label>
+                                <input id="c-last" type="text" placeholder="e.g. Doe" maxlength="32" spellcheck="false" />
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Date of Birth (age 18–80)</label>
+                            <div class="dob-row">
+                                <div class="dob-field">
+                                    <span class="dob-label">Year</span>
+                                    <input id="c-dob-year" type="number" min="1900" max="2100" placeholder="Year" inputmode="numeric" />
+                                </div>
+                                <div class="dob-field">
+                                    <span class="dob-label">Month</span>
+                                    <div id="c-dob-month" class="dob-month-btns" role="group" aria-label="Month"></div>
+                                </div>
+                                <div class="dob-field">
+                                    <span class="dob-label">Day</span>
+                                    <input id="c-dob-day" type="number" min="1" max="31" placeholder="Day" inputmode="numeric" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="Male" checked />
+                                    <span>Male</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="Female" />
+                                    <span>Female</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Blood Type</label>
+                            <div class="radio-group radio-group-blood">
+                                <label class="radio-label"><input type="radio" name="blood" value="A+" checked /><span>A+</span></label>
+                                <label class="radio-label"><input type="radio" name="blood" value="A-" /><span>A-</span></label>
+                                <label class="radio-label"><input type="radio" name="blood" value="B+" /><span>B+</span></label>
+                                <label class="radio-label"><input type="radio" name="blood" value="B-" /><span>B-</span></label>
+                                <label class="radio-label"><input type="radio" name="blood" value="AB+" /><span>AB+</span></label>
+                                <label class="radio-label"><input type="radio" name="blood" value="AB-" /><span>AB-</span></label>
+                                <label class="radio-label"><input type="radio" name="blood" value="O+" /><span>O+</span></label>
+                                <label class="radio-label"><input type="radio" name="blood" value="O-" /><span>O-</span></label>
+                            </div>
+                        </div>
+
+                        <button type="button" id="btn-next" class="btn btn-primary">Next → Choose Appearance</button>
+                    </div>
+
+                    <!-- Step 2: Ped skin selection -->
+                    <div id="create-step2" class="create-step hidden">
+                        <div id="ped-select-container">
+                            <div id="ped-grid" class="ped-grid"></div>
+                            <div class="ped-pagination">
+                                <button type="button" id="ped-prev" class="btn btn-ghost" disabled>← Prev</button>
+                                <span id="ped-page-info">Page 1 of 1</span>
+                                <button type="button" id="ped-next" class="btn btn-ghost">Next →</button>
+                            </div>
+                        </div>
+                        <div class="step2-actions">
+                            <button type="button" id="btn-step2-back" class="btn btn-ghost">← Back</button>
+                            <button type="button" id="btn-step2-next" class="btn btn-primary">Create Character</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Component customization (temporarily disabled) -->
+                    <div id="create-step3" class="create-step hidden">
+                        <!--
+                        <div class="field">
+                            <label>Customize Clothing</label>
+                            <p class="field-hint">Adjust drawable and texture for each component. Slider ranges are per-ped from the game.</p>
+                        </div>
+                        <div id="component-grid" class="component-grid"></div>
+                        <div class="step3-actions">
+                            <button type="button" id="btn-step3-back" class="btn btn-ghost">← Back</button>
+                            <button type="submit" id="btn-create" class="btn btn-primary">Create Character</button>
+                        </div>
+                        -->
+                    </div>
+
+                </form>
+
+                <!-- Pending -->
+                <div id="pending-create" class="hidden">
+                    <div class="spinner"></div>
+                    <span class="pending-label">Awaiting server response...</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Online indicator -->
+        <div id="indicator">
+            <span class="dot"></span>
+            <span class="indicator-label">System Online // Persistent World</span>
+        </div>
+
+    </div>
+
+    <script src="peds.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
